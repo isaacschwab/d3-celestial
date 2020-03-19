@@ -926,12 +926,12 @@ Celestial.display = function(config) {
 };
  
 //Export entire object if invoked by require
-if (typeof module === "object" && module.exports) {
-  var d3js = require('./lib/d3.js'),
-      d3_geo_projection = require('./lib/d3.geo.projection.js');
-  module.exports = {
-    Celestial: function() { return Celestial; },
-    d3: function() { return d3js; },
-    "d3.geo.projection": function() { return d3_geo_projection; }
-  };
-}
+// if (typeof module === "object" && module.exports) {
+//   var d3js = require('./lib/d3.js'),
+//       d3_geo_projection = require('./lib/d3.geo.projection.js');
+//   module.exports = {
+//     Celestial: function() { return Celestial; },
+//     d3: function() { return d3js; },
+//     "d3.geo.projection": function() { return d3_geo_projection; }
+//   };
+// }

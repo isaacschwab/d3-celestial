@@ -6,8 +6,8 @@ var shell = require('shelljs/make'),
     //zlib = require('zlib'),
     version = require('./package.json').version,
     copy = "// Copyright 2015-2019 Olaf Frohn https://github.com/ofrohn, see LICENSE\n",
-    begin = "!(function() {",
-    end = "this.Celestial = Celestial;\n})();",
+    begin = "export const createCelestial = function(d3) {",
+    end = "return Celestial;\n}",
     filename = './celestial',
     filelist = [
     './src/celestial.js', 
@@ -76,10 +76,10 @@ target.build = function() {
   file = copy + begin + file.replace(/\/\* global.*/g, '') + end;
   file.to(filename + '.js');
   
-  echo('Minifying');
+  // echo('Minifying');
 
-  var out = ug.minify(filename + '.js');
-  fs.writeFileSync(filename + '.min.js', copy + out.code);
+  // var out = ug.minify(filename + '.js');
+  // fs.writeFileSync(filename + '.min.js', copy + out.code);
   /*var read = ug.parse(fs.readFileSync(filename + '.js', "utf8"));
   read.figure_out_scope();
 

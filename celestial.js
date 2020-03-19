@@ -1,5 +1,5 @@
 // Copyright 2015-2019 Olaf Frohn https://github.com/ofrohn, see LICENSE
-!(function() {
+export const createCelestial = function(d3) {
 var Celestial = {
   version: '0.7.3',
   container: null,
@@ -927,15 +927,15 @@ Celestial.display = function(config) {
 };
  
 //Export entire object if invoked by require
-if (typeof module === "object" && module.exports) {
-  var d3js = require('./lib/d3.js'),
-      d3_geo_projection = require('./lib/d3.geo.projection.js');
-  module.exports = {
-    Celestial: function() { return Celestial; },
-    d3: function() { return d3js; },
-    "d3.geo.projection": function() { return d3_geo_projection; }
-  };
-}
+// if (typeof module === "object" && module.exports) {
+//   var d3js = require('./lib/d3.js'),
+//       d3_geo_projection = require('./lib/d3.geo.projection.js');
+//   module.exports = {
+//     Celestial: function() { return Celestial; },
+//     d3: function() { return d3js; },
+//     "d3.geo.projection": function() { return d3_geo_projection; }
+//   };
+// }
 
 //Flipped projection generated on the fly
 Celestial.projection = function(projection) {
@@ -4407,5 +4407,5 @@ function d3_eventDispatch(target) {
 }
 
 })();
-this.Celestial = Celestial;
-})();
+return Celestial;
+}
