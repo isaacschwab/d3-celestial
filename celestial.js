@@ -116,6 +116,11 @@ Celestial.display = function(config) {
     fldEnable("daylight-show", !proj.clip);
   }
   
+  // Initialize SVG Output
+  var contextSvg = d3.select('#'+config.svgcontainer)
+                      .append('svg')
+                      .attr('width', width)
+                      .attr('height', height);
 
 
   function load() {
@@ -548,6 +553,13 @@ Celestial.display = function(config) {
             setTextStyle(cfg.stars.propernameStyle);
             context.fillText(starPropername(d.id), pt[0]-r, pt[1]);      
           }
+
+          //svg output
+          contextSvg.append("circle")
+                    .attr("cx", pt[0])
+                    .attr("cy", pt[1])
+                    .attr("r", r);
+
         }
       });
     }
@@ -817,6 +829,7 @@ Celestial.display = function(config) {
   
   function clear() {
     context.clearRect(0, 0, width + margin[0], height + margin[1]);
+    contextSvg.selectAll("*").remove();
   }
   
   function getWidth() {
