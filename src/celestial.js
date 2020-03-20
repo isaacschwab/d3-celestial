@@ -116,9 +116,9 @@ Celestial.display = function(config) {
   }
   
   // Initialize SVG Output
-  var containerSvg = d3.select('#'+config.svgcontainer)
-  containerSvg.select("svg").remove()
-  var contextSvg = containerSvg.append("svg")
+  var containerSvg = d3.select('#'+config.svgcontainer);
+  containerSvg.select("svg").remove();
+  var contextSvg = containerSvg.append("svg");
   contextSvg.attr('width', width)
             .attr('height', height);
 

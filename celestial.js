@@ -117,10 +117,11 @@ Celestial.display = function(config) {
   }
   
   // Initialize SVG Output
-  var contextSvg = d3.select('#'+config.svgcontainer)
-                      .append('svg')
-                      .attr('width', width)
-                      .attr('height', height);
+  var containerSvg = d3.select('#'+config.svgcontainer);
+  containerSvg.select("svg").remove();
+  var contextSvg = containerSvg.append("svg");
+  contextSvg.attr('width', width)
+            .attr('height', height);
 
 
   function load() {
@@ -829,7 +830,9 @@ Celestial.display = function(config) {
   
   function clear() {
     context.clearRect(0, 0, width + margin[0], height + margin[1]);
-    contextSvg.selectAll("*").remove();
+    if(contextSvg) {
+      contextSvg.selectAll("*").remove();
+    }
   }
   
   function getWidth() {
